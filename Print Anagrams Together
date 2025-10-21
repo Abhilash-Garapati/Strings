@@ -1,0 +1,21 @@
+class Solution 
+{
+    public ArrayList<ArrayList<String>> anagrams(String[] arr) 
+    {
+        // code here
+        HashMap <String, ArrayList<String>> map = new HashMap<>();
+        for(int i = 0;i<arr.length;i++)
+        {
+            String s = arr[i];
+            char chars [] = s.toCharArray();
+            Arrays.sort(chars);
+            String sorted = new String(chars);
+            if(!map.containsKey(sorted))
+            {
+                map.put(sorted,new ArrayList<>());
+            }
+            map.get(sorted).add(arr[i]);
+        }
+        return new ArrayList<>(map.values());
+    }
+}
